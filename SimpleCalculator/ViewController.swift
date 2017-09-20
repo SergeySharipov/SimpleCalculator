@@ -10,6 +10,23 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var resultLabel: UILabel!
+    var temp=0
+    
+    @IBAction func onClickNumbers(_ sender: UIButton) {
+        resultLabel.text=sender.titleLabel?.text
+        
+        let a = Int((sender.titleLabel?.text)!)
+        
+        if(temp==0){
+            temp = a!
+        } else {
+            resultLabel.text=String(a!+temp)
+            temp = 0
+        }
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
