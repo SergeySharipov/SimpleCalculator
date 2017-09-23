@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		84006D0A1F75D472000C8B56 /* ModButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84006D091F75D472000C8B56 /* ModButton.swift */; };
+		84006D0C1F760A87000C8B56 /* ModLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84006D0B1F760A87000C8B56 /* ModLabel.swift */; };
 		84FDC0D61F72EF0B00F79C00 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FDC0D51F72EF0B00F79C00 /* AppDelegate.swift */; };
 		84FDC0D81F72EF0B00F79C00 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FDC0D71F72EF0B00F79C00 /* ViewController.swift */; };
 		84FDC0DB1F72EF0B00F79C00 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84FDC0D91F72EF0B00F79C00 /* Main.storyboard */; };
@@ -15,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		84006D091F75D472000C8B56 /* ModButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModButton.swift; sourceTree = "<group>"; };
+		84006D0B1F760A87000C8B56 /* ModLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModLabel.swift; sourceTree = "<group>"; };
 		84FDC0D21F72EF0B00F79C00 /* SimpleCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84FDC0D51F72EF0B00F79C00 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84FDC0D71F72EF0B00F79C00 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -60,6 +64,8 @@
 				84FDC0DC1F72EF0B00F79C00 /* Assets.xcassets */,
 				84FDC0DE1F72EF0B00F79C00 /* LaunchScreen.storyboard */,
 				84FDC0E11F72EF0B00F79C00 /* Info.plist */,
+				84006D091F75D472000C8B56 /* ModButton.swift */,
+				84006D0B1F760A87000C8B56 /* ModLabel.swift */,
 			);
 			path = SimpleCalculator;
 			sourceTree = "<group>";
@@ -137,6 +143,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84006D0A1F75D472000C8B56 /* ModButton.swift in Sources */,
+				84006D0C1F760A87000C8B56 /* ModLabel.swift in Sources */,
 				84FDC0D81F72EF0B00F79C00 /* ViewController.swift in Sources */,
 				84FDC0D61F72EF0B00F79C00 /* AppDelegate.swift in Sources */,
 			);
