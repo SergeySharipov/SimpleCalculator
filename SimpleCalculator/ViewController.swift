@@ -58,25 +58,25 @@ class ViewController: UIViewController {
             } else {
                 equalsOp()
             }
-            switch sender {
-            case butPlus:
-                tempMathOperation = plus
-                break
-            case butMinus:
-                tempMathOperation = minus
-                break
-            case butDivide:
-                tempMathOperation = divide
-                break
-            case butMultiply:
-                tempMathOperation = multiply
-                break
-            default:
-                break
-            }
-            
-            resultLabel.text = empty
         }
+        switch sender {
+        case butPlus:
+            tempMathOperation = plus
+            break
+        case butMinus:
+            tempMathOperation = minus
+            break
+        case butDivide:
+            tempMathOperation = divide
+            break
+        case butMultiply:
+            tempMathOperation = multiply
+            break
+        default:
+            break
+        }
+        
+        resultLabel.text = empty
     } 
     
     //Click listener for all buttons except plus,minus,divide,multiply and numbers
