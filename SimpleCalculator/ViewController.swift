@@ -46,16 +46,20 @@ class ViewController: UIViewController {
     @IBAction func onClickOtherOperations(_ sender: UIButton) {
         switch sender {
         case butPercent:
-            resultLabel.text = String(percentage())
+            percentage()
             break
         case butSquareRoot:
-            resultLabel.text = String(squareRoot())
+            resultLabel.text = String(sqrt(getCurrentValue()))
             break
         case butPlusMinus:
-            resultLabel.text = String(getCurrentValue() * -1.0)
+            if ((resultLabel.text?.characters.count)! > 0){
+                resultLabel.text = String(getCurrentValue() * -1.0)
+            }
             break
         case butPoint:
-            resultLabel.text = resultLabel.text! + (point)
+            if(!(resultLabel.text?.contains("."))! && (resultLabel.text?.characters.count)! > 0){
+                resultLabel.text = resultLabel.text! + (point)
+            }
             break
         case butEquals:
             equalsOp()
@@ -148,23 +152,11 @@ class ViewController: UIViewController {
     temp2 = Double.greatestFiniteMagnitude
     }
     
-    func percentage() -> Double{
+    func percentage() {
         if temp == Double.greatestFiniteMagnitude {
-            temp = getCurrentValue() / 100
-            return temp
+            resultLabel.text = String(getCurrentValue() / 100)
         } else {
-            temp2 = temp * getCurrentValue() / 100
-            return temp2
-        }
-    }
-    
-    func squareRoot() -> Double{
-        if temp == Double.greatestFiniteMagnitude {
-            temp = sqrt(getCurrentValue())
-            return temp
-        } else {
-            temp2 = sqrt(getCurrentValue())
-            return temp2
+            resultLabel.text = String(temp * getCurrentValue() / 100)
         }
     }
     
