@@ -31,6 +31,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var butMinus: UIButton!
     @IBOutlet weak var butPlus: UIButton!
     
+    @IBOutlet weak var butSquareRoot: UIButton!
     @IBOutlet weak var butPercent: UIButton!
     @IBOutlet weak var butDel: UIButton!
     @IBOutlet weak var butC: UIButton!
@@ -45,7 +46,10 @@ class ViewController: UIViewController {
     @IBAction func onClickOtherOperations(_ sender: UIButton) {
         switch sender {
         case butPercent:
-            resultLabel.text = resultLabel.text! + (percent)
+            resultLabel.text = String(percentage())
+            break
+        case butSquareRoot:
+            resultLabel.text = String(squareRoot())
             break
         case butPlusMinus:
             resultLabel.text = String(getCurrentValue() * -1.0)
@@ -142,6 +146,26 @@ class ViewController: UIViewController {
         
     resultLabel.text = String(temp)
     temp2 = Double.greatestFiniteMagnitude
+    }
+    
+    func percentage() -> Double{
+        if temp == Double.greatestFiniteMagnitude {
+            temp = getCurrentValue() / 100
+            return temp
+        } else {
+            temp2 = temp * getCurrentValue() / 100
+            return temp2
+        }
+    }
+    
+    func squareRoot() -> Double{
+        if temp == Double.greatestFiniteMagnitude {
+            temp = sqrt(getCurrentValue())
+            return temp
+        } else {
+            temp2 = sqrt(getCurrentValue())
+            return temp2
+        }
     }
     
     func getCurrentValue() -> Double {
