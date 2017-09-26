@@ -23,7 +23,7 @@ class ViewController: UIViewController {
     private var temp: Double = Double.greatestFiniteMagnitude
     private var temp2: Double = Double.greatestFiniteMagnitude
     private var tempMathOperation: String = ""
-
+    
     @IBOutlet weak var resultLabel: UILabel!
     
     @IBOutlet weak var butDivide: UIButton!
@@ -44,28 +44,37 @@ class ViewController: UIViewController {
     }
     
     @IBAction func onClickOtherOperations(_ sender: UIButton) {
+        let currentValue: Double = getCurrentValue();
+        
+        if(currentValue != Double.greatestFiniteMagnitude){
+            switch sender {
+            case butPercent:
+                percentage()
+                break
+            case butSquareRoot:
+                resultLabel.text = String(sqrt(currentValue))
+                break
+            case butPlusMinus:
+                if ((resultLabel.text?.characters.count)! > 0){
+                    resultLabel.text = String(currentValue * -1.0)
+                }
+                break
+            case butPoint:
+                if(!(resultLabel.text?.contains("."))! && (resultLabel.text?.characters.count)! > 0){
+                    resultLabel.text = resultLabel.text! + (point)
+                }
+                break
+            case butEquals:
+                equalsOp()
+                temp = Double.greatestFiniteMagnitude
+                tempMathOperation = empty
+                break
+            default:
+                break
+            }
+        }
+        
         switch sender {
-        case butPercent:
-            percentage()
-            break
-        case butSquareRoot:
-            resultLabel.text = String(sqrt(getCurrentValue()))
-            break
-        case butPlusMinus:
-            if ((resultLabel.text?.characters.count)! > 0){
-                resultLabel.text = String(getCurrentValue() * -1.0)
-            }
-            break
-        case butPoint:
-            if(!(resultLabel.text?.contains("."))! && (resultLabel.text?.characters.count)! > 0){
-                resultLabel.text = resultLabel.text! + (point)
-            }
-            break
-        case butEquals:
-            equalsOp()
-            temp = Double.greatestFiniteMagnitude
-            tempMathOperation = empty
-            break
         case butC:
             clean()
             break
@@ -77,100 +86,96 @@ class ViewController: UIViewController {
         default:
             break
         }
-
+        
+        
     }
     
     @IBAction func onClickMathOperations(_ sender: UIButton) {
-        var pressed = false
+        let currentValue: Double = getCurrentValue();
         
-        if (temp == Double.greatestFiniteMagnitude) {
-            temp = getCurrentValue()
-        } else {
-            equalsOp()
+        if(currentValue != Double.greatestFiniteMagnitude){
+            if (temp == Double.greatestFiniteMagnitude) {
+                temp = currentValue
+            } else {
+                equalsOp()
+            }
+            switch sender {
+            case butPlus:
+                tempMathOperation = plus
+                break
+            case butMinus:
+                tempMathOperation = minus
+                break
+            case butDivide:
+                tempMathOperation = divide
+                break
+            case butMultiply:
+                tempMathOperation = multiply
+                break
+            default:
+                break
+            }
+            
+            resultLabel.text = empty
         }
-        switch sender {
-        case butPlus:
-            tempMathOperation = plus
-            pressed = true
-            break
-        case butMinus:
-            tempMathOperation = minus
-            pressed = true
-            break
-        case butDivide:
-            tempMathOperation = divide
-            pressed = true
-            break
-        case butMultiply:
-            tempMathOperation = multiply
-            pressed = true
-            break
-        default:
-            break
-        }
-        
-        resultLabel.text = empty
-        
     }
-
+    
     private func clean() {
-    temp = Double.greatestFiniteMagnitude
-    temp2 = Double.greatestFiniteMagnitude
-    tempMathOperation = empty
-    resultLabel.text = empty
+        temp = Double.greatestFiniteMagnitude
+        temp2 = Double.greatestFiniteMagnitude
+        tempMathOperation = empty
+        resultLabel.text = empty
     }
     
     private func equalsOp() {
+        let currentValue: Double = getCurrentValue();
         
-        temp2 = getCurrentValue()
-        
-        switch tempMathOperation {
-        case plus:
-            temp = temp + temp2
-            break
-        case minus:
-            temp = temp - temp2
-            break
-        case divide:
-            temp = temp / temp2
-            break
-        case multiply:
-            temp = temp * temp2
-            break
-        default:
-            if (temp != Double.greatestFiniteMagnitude) {
-                resultLabel.text = String(temp)
-            } else if (temp2 != Double.greatestFiniteMagnitude) {
-                resultLabel.text = String(temp2)
-            } else{
-                resultLabel.text = empty
+        if(currentValue != Double.greatestFiniteMagnitude){
+            temp2 = currentValue
+            
+            switch tempMathOperation {
+            case plus:
+                temp = temp + temp2
+                break
+            case minus:
+                temp = temp - temp2
+                break
+            case divide:
+                temp = temp / temp2
+                break
+            case multiply:
+                temp = temp * temp2
+                break
+            default:
+                break
             }
-            break
+            if(temp != Double.greatestFiniteMagnitude){
+                resultLabel.text = String(temp)
+                temp2 = Double.greatestFiniteMagnitude
+            } else {
+                //clean()
+            }
         }
-        
-    resultLabel.text = String(temp)
-    temp2 = Double.greatestFiniteMagnitude
     }
     
     func percentage() {
-        if temp == Double.greatestFiniteMagnitude {
-            resultLabel.text = String(getCurrentValue() / 100)
-        } else {
-            resultLabel.text = String(temp * getCurrentValue() / 100)
+        let currentValue: Double = getCurrentValue();
+        
+        if(currentValue != Double.greatestFiniteMagnitude){
+            if temp == Double.greatestFiniteMagnitude {
+                resultLabel.text = String(currentValue / 100)
+            } else {
+                resultLabel.text = String(temp * currentValue / 100)
+            }
         }
     }
     
     func getCurrentValue() -> Double {
-    var a: Double
-        
-        do {
-            a = try Double(resultLabel.text!)!
-        } catch {
-            a = Double.greatestFiniteMagnitude
-            clean()
+        if let a = Double(resultLabel.text!) {
+            return a
+        } else {
+            return Double.greatestFiniteMagnitude
         }
-   
-    return a
     }
     
     override func viewDidLoad() {
