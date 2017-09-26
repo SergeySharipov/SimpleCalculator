@@ -77,7 +77,7 @@ class ViewController: UIViewController {
             
             resultLabel.text = empty
         }
-    }
+    } 
     
     //Click listener for all buttons except plus,minus,divide,multiply and numbers
     @IBAction func onClickOtherOperations(_ sender: UIButton) {
@@ -159,7 +159,7 @@ class ViewController: UIViewController {
             if(temp != Double.greatestFiniteMagnitude){
                 resultLabel.text = String(temp)
                 temp2 = Double.greatestFiniteMagnitude
-            } 
+            }
         }
     }
     
