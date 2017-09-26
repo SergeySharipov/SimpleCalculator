@@ -2,14 +2,17 @@
 //  ViewController.swift
 //  SimpleCalculator
 //
-//  Created by Admin on 20.09.17.
-//  Copyright © 2017 Admin. All rights reserved.
+//  Created by Sergey Sharipov on 20.09.17.
+//  App for simple calc operations
+//  Version 1.0
+//  Copyright © 2017 Sergey Sharipov. All rights reserved.
 //
 
 import UIKit
 
 class ViewController: UIViewController {
     
+    //Constant variables
     private let plus: String = "+"
     private let minus: String = "-"
     private let multiply: String = "*"
@@ -20,6 +23,7 @@ class ViewController: UIViewController {
     private let point: String = "."
     private let empty: String = ""
     
+    //Variables for save temp information
     private var temp: Double = Double.greatestFiniteMagnitude
     private var temp2: Double = Double.greatestFiniteMagnitude
     private var tempMathOperation: String = ""
@@ -39,10 +43,43 @@ class ViewController: UIViewController {
     @IBOutlet weak var butPlusMinus: UIButton!
     @IBOutlet weak var butPoint: UIButton!
     
+    //Click listener for numbers buttons
     @IBAction func onClickNumbers(_ sender: UIButton) {
         resultLabel.text=resultLabel.text!.appending(sender.title(for: .normal)!)
     }
     
+    //Click listener for plus,minus,divide,multiply buttons
+    @IBAction func onClickMathOperations(_ sender: UIButton) {
+        let currentValue: Double = getCurrentValue();
+        
+        if(currentValue != Double.greatestFiniteMagnitude){
+            if (temp == Double.greatestFiniteMagnitude) {
+                temp = currentValue
+            } else {
+                equalsOp()
+            }
+            switch sender {
+            case butPlus:
+                tempMathOperation = plus
+                break
+            case butMinus:
+                tempMathOperation = minus
+                break
+            case butDivide:
+                tempMathOperation = divide
+                break
+            case butMultiply:
+                tempMathOperation = multiply
+                break
+            default:
+                break
+            }
+            
+            resultLabel.text = empty
+        }
+    }
+    
+    //Click listener for all buttons except plus,minus,divide,multiply and numbers
     @IBAction func onClickOtherOperations(_ sender: UIButton) {
         let currentValue: Double = getCurrentValue();
         
@@ -86,40 +123,9 @@ class ViewController: UIViewController {
         default:
             break
         }
-        
-        
     }
     
-    @IBAction func onClickMathOperations(_ sender: UIButton) {
-        let currentValue: Double = getCurrentValue();
-        
-        if(currentValue != Double.greatestFiniteMagnitude){
-            if (temp == Double.greatestFiniteMagnitude) {
-                temp = currentValue
-            } else {
-                equalsOp()
-            }
-            switch sender {
-            case butPlus:
-                tempMathOperation = plus
-                break
-            case butMinus:
-                tempMathOperation = minus
-                break
-            case butDivide:
-                tempMathOperation = divide
-                break
-            case butMultiply:
-                tempMathOperation = multiply
-                break
-            default:
-                break
-            }
-            
-            resultLabel.text = empty
-        }
-    }
-    
+    //Clean all temp information
     private func clean() {
         temp = Double.greatestFiniteMagnitude
         temp2 = Double.greatestFiniteMagnitude
@@ -127,6 +133,7 @@ class ViewController: UIViewController {
         resultLabel.text = empty
     }
     
+    //Equals operation
     private func equalsOp() {
         let currentValue: Double = getCurrentValue();
         
@@ -152,12 +159,11 @@ class ViewController: UIViewController {
             if(temp != Double.greatestFiniteMagnitude){
                 resultLabel.text = String(temp)
                 temp2 = Double.greatestFiniteMagnitude
-            } else {
-                //clean()
-            }
+            } 
         }
     }
     
+    //Calc percent func
     func percentage() {
         let currentValue: Double = getCurrentValue();
         
@@ -170,6 +176,7 @@ class ViewController: UIViewController {
         }
     }
     
+    //Return double value from label text
     func getCurrentValue() -> Double {
         if let a = Double(resultLabel.text!) {
             return a

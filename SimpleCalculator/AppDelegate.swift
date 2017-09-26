@@ -2,8 +2,10 @@
 //  AppDelegate.swift
 //  SimpleCalculator
 //
-//  Created by Admin on 20.09.17.
-//  Copyright © 2017 Admin. All rights reserved.
+//  Created by Sergey Sharipov on 20.09.17.
+//  App for simple calc operations
+//  Version 1.0
+//  Copyright © 2017 Sergey Sharipov. All rights reserved.
 //
 
 import UIKit
