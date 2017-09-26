@@ -18,6 +18,7 @@ class ViewController: UIViewController {
     private let plusMinus: String = "+/-"
     private let equals: String = "="
     private let point: String = "."
+    private let empty: String = ""
     
     private var temp: Double = Double.greatestFiniteMagnitude
     private var temp2: Double = Double.greatestFiniteMagnitude
@@ -39,14 +40,6 @@ class ViewController: UIViewController {
     
     @IBAction func onClickNumbers(_ sender: UIButton) {
         resultLabel.text=resultLabel.text!.appending(sender.title(for: .normal)!)
-        
-        if (tempMathOperation == ""){
-        temp = getCurrentValue()
-        }
-        else{
-        temp2 = getCurrentValue()
-        }
-
     }
     
     @IBAction func onClickOtherOperations(_ sender: UIButton) {
@@ -62,12 +55,14 @@ class ViewController: UIViewController {
             break
         case butEquals:
             equalsOp()
+            temp = Double.greatestFiniteMagnitude
+            tempMathOperation = empty
             break
         case butC:
             clean()
             break
         case butDel:
-            if (resultLabel.text != ""){
+            if (resultLabel.text != empty){
                 resultLabel.text!.remove(at: resultLabel.text!.index(before:resultLabel.text!.endIndex))
             }
             break
@@ -82,6 +77,8 @@ class ViewController: UIViewController {
         
         if (temp == Double.greatestFiniteMagnitude) {
             temp = getCurrentValue()
+        } else {
+            equalsOp()
         }
         switch sender {
         case butPlus:
@@ -104,41 +101,47 @@ class ViewController: UIViewController {
             break
         }
         
-        if (pressed && temp2 != Double.greatestFiniteMagnitude){
-        equalsOp()
-        }
-        else if (pressed){
-        resultLabel.text = ""
-        }
+        resultLabel.text = empty
+        
     }
 
     private func clean() {
     temp = Double.greatestFiniteMagnitude
     temp2 = Double.greatestFiniteMagnitude
-    tempMathOperation = ""
-    resultLabel.text = ""
+    tempMathOperation = empty
+    resultLabel.text = empty
     }
     
     private func equalsOp() {
+        
+        temp2 = getCurrentValue()
+        
         switch tempMathOperation {
         case plus:
-            resultLabel.text = String(temp + temp2)
+            temp = temp + temp2
             break
         case minus:
-            resultLabel.text = String(temp - temp2)
+            temp = temp - temp2
             break
         case divide:
-            resultLabel.text = String(temp / temp2)
+            temp = temp / temp2
             break
         case multiply:
-            resultLabel.text = String(temp * temp2)
+            temp = temp * temp2
             break
         default:
+            if (temp != Double.greatestFiniteMagnitude) {
+                resultLabel.text = String(temp)
+            } else if (temp2 != Double.greatestFiniteMagnitude) {
+                resultLabel.text = String(temp2)
+            } else{
+                resultLabel.text = empty
+            }
             break
         }
-    temp = Double.greatestFiniteMagnitude
+        
+    resultLabel.text = String(temp)
     temp2 = Double.greatestFiniteMagnitude
-    tempMathOperation = ""
     }
     
     func getCurrentValue() -> Double {
