@@ -134,7 +134,7 @@ class ViewController: UIViewController {
         temp = Double.greatestFiniteMagnitude
         temp2 = Double.greatestFiniteMagnitude
         tempMathOperation = empty
-        resultLabel.text = ""
+        resultLabel.text = "0"
     }
     
     //Equals operation
