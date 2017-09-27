@@ -3,6 +3,7 @@
 //  SimpleCalculator
 //
 //  Created by Sergey Sharipov on 20.09.17.
+//  Student id: 300961984
 //  App for simple calc operations
 //  Version 1.0
 //  Copyright © 2017 Sergey Sharipov. All rights reserved.
