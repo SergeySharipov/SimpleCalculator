@@ -235,7 +235,7 @@
                                     <action selector="onClickOtherOperations:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0Om-6E-kf6"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fL5-KT-FXX" customClass="ModLabel" customModule="SimpleCalculator" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fL5-KT-FXX" customClass="ModLabel" customModule="SimpleCalculator" customModuleProvider="target">
                                 <rect key="frame" x="16" y="28" width="300" height="173"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.88637467616580312" green="0.88637467616580312" blue="0.88637467616580312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

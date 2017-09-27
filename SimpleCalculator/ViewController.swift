@@ -45,6 +45,10 @@ class ViewController: UIViewController {
     
     //Click listener for numbers buttons
     @IBAction func onClickNumbers(_ sender: UIButton) {
+        if(resultLabel.text == "0"){
+            resultLabel.text = empty
+        }
+    
         resultLabel.text=resultLabel.text!.appending(sender.title(for: .normal)!)
     }
     
@@ -76,7 +80,7 @@ class ViewController: UIViewController {
             break
         }
         
-        resultLabel.text = empty
+        resultLabel.text = "0"
     } 
     
     //Click listener for all buttons except plus,minus,divide,multiply and numbers
@@ -130,7 +134,7 @@ class ViewController: UIViewController {
         temp = Double.greatestFiniteMagnitude
         temp2 = Double.greatestFiniteMagnitude
         tempMathOperation = empty
-        resultLabel.text = empty
+        resultLabel.text = ""
     }
     
     //Equals operation
